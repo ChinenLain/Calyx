@@ -13,6 +13,5 @@ namespace Calyx {
 	void Application::Run()
 	{
 		while (true);
-
 	}
 }
