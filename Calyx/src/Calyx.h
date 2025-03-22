@@ -2,10 +2,10 @@
 
 //for use by Calyx Applications
 
-#include "Calyx/Application.h"
-#include "Calyx/Log.h"
+#include "Calyx/Core/Application.h"
+#include "Calyx/Core/Log.h"
 
 
 //------Èë¿Úµã-----------------
-#include "Calyx/EnterPoint.h"
+#include "Calyx/Core/EnterPoint.h"
 //----------------------------

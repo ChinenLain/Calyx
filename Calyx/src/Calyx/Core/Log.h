@@ -4,6 +4,7 @@
 
 #include "Core.h"
 #include "spdlog/spdlog.h"
+#include "spdlog/fmt/ostr.h"
 
 namespace Calyx {
 	class CALYX_API Log

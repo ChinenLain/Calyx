@@ -8,7 +8,16 @@ workspace "Calyx"
 		"Dist"
 	}
 
+	    -- 全局启用 /utf-8 选项（仅对 MSVC 生效）
+	filter { "action:vs*" }  -- 匹配所有 Visual Studio 版本
+    	buildoptions { "/utf-8" }
+	
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+IncludeDir = {}
+IncludeDir["GLFW"] = "Calyx/vendor/GLFW/include"
+
+include "Calyx/vendor/GLFW"
 
 project "Calyx"
 	location "Calyx"
@@ -18,6 +27,9 @@ project "Calyx"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "clxpch.h"
+	pchsource "Calyx/src/clxpch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",
@@ -26,7 +38,15 @@ project "Calyx"
 
 	includedirs
 	{
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/src",
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"

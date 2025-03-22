@@ -4,28 +4,51 @@
     <Filter Include="Calyx">
       <UniqueIdentifier>{2676F20C-928A-1ABE-5B0C-BE1DC7DF16EF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Calyx\Core">
+      <UniqueIdentifier>{3E620991-2A1A-4BDE-9321-243A7FF8E5CE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Calyx\Events">
+      <UniqueIdentifier>{4AFB0CFE-365E-9CA2-DFE3-D458CB256825}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Calyx.h" />
-    <ClInclude Include="src\Calyx\Application.h">
-      <Filter>Calyx</Filter>
+    <ClInclude Include="src\Calyx\Core\Application.h">
+      <Filter>Calyx\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Calyx\Core.h">
-      <Filter>Calyx</Filter>
+    <ClInclude Include="src\Calyx\Core\Core.h">
+      <Filter>Calyx\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Calyx\EnterPoint.h">
-      <Filter>Calyx</Filter>
+    <ClInclude Include="src\Calyx\Core\EnterPoint.h">
+      <Filter>Calyx\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Calyx\Log.h">
-      <Filter>Calyx</Filter>
+    <ClInclude Include="src\Calyx\Core\Log.h">
+      <Filter>Calyx\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Calyx\Events\ApplicationEvent.h">
+      <Filter>Calyx\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Calyx\Events\Event.h">
+      <Filter>Calyx\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Calyx\Events\KeyEvent.h">
+      <Filter>Calyx\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Calyx\Events\MouseEvent.h">
+      <Filter>Calyx\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\clxpch.h" />
+    <ClInclude Include="src\Calyx\Core\Window.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Calyx\Application.cpp">
-      <Filter>Calyx</Filter>
+    <ClCompile Include="src\Calyx\Core\Application.cpp">
+      <Filter>Calyx\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Calyx\Log.cpp">
-      <Filter>Calyx</Filter>
+    <ClCompile Include="src\Calyx\Core\Log.cpp">
+      <Filter>Calyx\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\clxpch.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
 </Project>
