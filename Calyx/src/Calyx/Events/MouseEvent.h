@@ -10,7 +10,7 @@ namespace Calyx {
 			:m_MouseX(x), m_MouseY(y) {}
 
 		EVENT_CLASS_TYPE(MouseMoved)
-		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)						//事件：输入事件   输入设备：鼠标
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 
 		std::string ToString() const override
 		{
@@ -33,7 +33,7 @@ namespace Calyx {
 			:m_XOffset(xOffset), m_YOffset(yOffset) {}
 
 		EVENT_CLASS_TYPE(MouseScrolled)
-			EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)						//事件：输入事件   输入设备：鼠标
+			EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 
 		std::string ToString() const override
 		{
@@ -53,7 +53,7 @@ namespace Calyx {
 	class MouseButtonEvent : public Event
 	{
 	public:
-		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)						//事件：输入事件  输入设备：鼠标
+		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 
 		inline int GetMouseButton() const { return m_Button; }
 	protected:

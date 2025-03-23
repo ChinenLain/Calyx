@@ -10,17 +10,17 @@
 #endif
 
 #ifdef CLX_ENABLE_ASSERTS
-//断言（如果x表示错误则语句运行，{0}占位的"__VA_ARGS__"代表"..."所输入的语句）
-#define CLX_CORE_ASSERT(x, ...) \
-		{if(!x){\
-			CLX_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__);\
-			__debugbreak();}\
-		}
-#define CLX_ASSERT(x, ...)\
-		{if(!x){\
-			CLX_ERROR("Assertion Failed: {0}", __VA_ARGS__);\
-			__debugbreak();}\
-		}
+	//断言（如果x表示错误则语句运行，{0}占位的"__VA_ARGS__"代表"..."所输入的语句）
+	#define CLX_CORE_ASSERT(x, ...) \
+			{if(!x){\
+				CLX_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__);\
+				__debugbreak();}\
+			}
+	#define CLX_ASSERT(x, ...)\
+			{if(!x){\
+				CLX_ERROR("Assertion Failed: {0}", __VA_ARGS__);\
+				__debugbreak();}\
+			}
 #else
 	#define CLX_CORE_ASSERT(x, ...)
 	#define CLX_ASSERT(x, ...)

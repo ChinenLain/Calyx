@@ -3,7 +3,7 @@
 #include "Event.h"
 
 namespace Calyx {
-	class WindowResizeEvent : public Event				//公有继承的派生类
+	class WindowResizeEvent : public Event
 	{
 	public:
 		WindowResizeEvent(unsigned int width, unsigned int height)

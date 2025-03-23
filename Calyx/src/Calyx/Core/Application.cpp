@@ -1,6 +1,6 @@
 #include "clxpch.h"
-#include "Application.h"
 
+#include "Application.h"
 #include "Calyx/Events/ApplicationEvent.h"
 
 #include <GLFW/glfw3.h>
@@ -19,13 +19,29 @@ namespace Calyx {
 	{
 	}
 
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverLay(Layer* layer)
+	{
+		m_LayerStack.PushOverLay(layer);
+	}
+
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
+		//CLX_CORE_TRACE("{0}", e.ToString());
 
-		CLX_CORE_TRACE("{0}", e.ToString());
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
+		{
+			(*--it)->OnEvent(e);
+			if (e.Handled)
+				break;
+		}
 	}
 
 
@@ -33,8 +49,11 @@ namespace Calyx {
 	{
 		while (m_Running)
 		{
-			glClearColor(0.7f, 0.878f, 0.901f, 1);
+			glClearColor(1, 0, 1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			for (Layer* layer : m_LayerStack)
+				layer->OnUpdate();
 
 			m_Window->OnUpdate();
 		}

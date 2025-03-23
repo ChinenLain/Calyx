@@ -10,6 +10,12 @@
     <Filter Include="Calyx\Events">
       <UniqueIdentifier>{4AFB0CFE-365E-9CA2-DFE3-D458CB256825}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Calyx.h" />
@@ -22,7 +28,16 @@
     <ClInclude Include="src\Calyx\Core\EnterPoint.h">
       <Filter>Calyx\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Calyx\Core\Layer.h">
+      <Filter>Calyx\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Calyx\Core\LayerStack.h">
+      <Filter>Calyx\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Calyx\Core\Log.h">
+      <Filter>Calyx\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Calyx\Core\Window.h">
       <Filter>Calyx\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Calyx\Events\ApplicationEvent.h">
@@ -37,18 +52,27 @@
     <ClInclude Include="src\Calyx\Events\MouseEvent.h">
       <Filter>Calyx\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\clxpch.h" />
-    <ClInclude Include="src\Calyx\Core\Window.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Calyx\Core\Application.cpp">
       <Filter>Calyx\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\Calyx\Core\Layer.cpp">
+      <Filter>Calyx\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Calyx\Core\LayerStack.cpp">
+      <Filter>Calyx\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\Calyx\Core\Log.cpp">
       <Filter>Calyx\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\clxpch.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
 </Project>

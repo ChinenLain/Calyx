@@ -67,14 +67,17 @@ project "Calyx"
 	
 	filter "configurations:Debug"
 		defines "CLX_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "CLX_RELEASE"
+		buildoptions "/MDd"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "CLX_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
@@ -116,12 +119,15 @@ project "Sandbox"
 	
 	filter "configurations:Debug"
 		defines "CLX_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "CLX_RELEASE"
+		buildoptions "/MDd"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "CLX_DIST"
+		buildoptions "/MD"
 		optimize "On"
