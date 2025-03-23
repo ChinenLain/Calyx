@@ -14,7 +14,6 @@ namespace Calyx {
 		KeyPressed, KeyReleased, KeyTyped,
 		MouseButtonPressed, MouseButtonReleased, MouseScrolled, MouseMoved
 	};
-	//enum class使用时有作用域限制，需要 EventType:: 引用。enum不用。
 
 	enum EventCategory {								//事件类别
 		None = 0,

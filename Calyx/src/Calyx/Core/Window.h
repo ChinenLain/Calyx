@@ -20,11 +20,11 @@ namespace Calyx {
 	};
 
 
-	//An interface for the desktop system which based on Window（基于Windows的桌面系统的接口）
+	//An interface for the desktop system which based on Window
 	class CALYX_API Window
 	{
 	public:
-		static Window* Create(const WindowProps& props = WindowProps());		//返回指向Windows类型的指针
+		static Window* Create(const WindowProps& props = WindowProps());
 		//-----------------------All interfaces----------------------------------
 		using EventCallbackFn = std::function<void(Event&)>;
 
