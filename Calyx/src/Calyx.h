@@ -6,6 +6,10 @@
 #include "Calyx/Core/Layer.h"
 #include "Calyx/Core/Log.h"
 
+#include "Calyx/Core/Input.h"
+#include "Calyx/Core/KeyCodes.h"
+#include "Calyx/Core/MouseButtonCodes.h"
+
 #include "Calyx/ImGui/ImGuiLayer.h"
 
 //------Èë¿Úµã-----------------

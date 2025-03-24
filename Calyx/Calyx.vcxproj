@@ -159,9 +159,12 @@
     <ClInclude Include="src\Calyx\Core\Application.h" />
     <ClInclude Include="src\Calyx\Core\Core.h" />
     <ClInclude Include="src\Calyx\Core\EnterPoint.h" />
+    <ClInclude Include="src\Calyx\Core\Input.h" />
+    <ClInclude Include="src\Calyx\Core\KeyCodes.h" />
     <ClInclude Include="src\Calyx\Core\Layer.h" />
     <ClInclude Include="src\Calyx\Core\LayerStack.h" />
     <ClInclude Include="src\Calyx\Core\Log.h" />
+    <ClInclude Include="src\Calyx\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Calyx\Core\Window.h" />
     <ClInclude Include="src\Calyx\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Calyx\Events\Event.h" />
@@ -171,6 +174,7 @@
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\clxpch.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Calyx\Core\Application.cpp" />
@@ -183,6 +187,7 @@
     <ClCompile Include="src\clxpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

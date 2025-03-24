@@ -11,12 +11,19 @@ public:
 
 	void OnUpdate() override
 	{
-		CLX_INFO("ExampleLayer::Update");
+		if (Calyx::Input::IsKeyPressed(CLX_KEY_TAB))
+			CLX_TRACE("Tab键被按下 (poll)!");
 	}
 
 	void OnEvent(Calyx::Event& event) override
 	{
-		CLX_TRACE("{0}", event.ToString());
+		if (event.GetEventType() == Calyx::EventType::KeyPressed)
+		{
+			Calyx::KeyPressedEvent& e = (Calyx::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == CLX_KEY_TAB)
+				CLX_TRACE("Tab键被按下 (event)!");
+			CLX_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 };
 
