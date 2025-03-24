@@ -171,7 +171,6 @@
     <ClInclude Include="src\Calyx\Events\KeyEvent.h" />
     <ClInclude Include="src\Calyx\Events\MouseEvent.h" />
     <ClInclude Include="src\Calyx\ImGui\ImGuiLayer.h" />
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\clxpch.h" />
@@ -599,8 +598,8 @@
     <ClCompile Include="src\Calyx\Core\Layer.cpp" />
     <ClCompile Include="src\Calyx\Core\LayerStack.cpp" />
     <ClCompile Include="src\Calyx\Core\Log.cpp" />
+    <ClCompile Include="src\Calyx\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Calyx\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\clxpch.cpp">

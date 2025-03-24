@@ -29,9 +29,8 @@ namespace Calyx
 		std::vector<Layer*>::const_reverse_iterator rend()   const { return m_Layers.rbegin(); }
 
 	private:
-		std::vector<Layer*> m_Layers;				//存入指向Layer对象的指针
-		//std::vector<Layer*>::iterator m_LayerInsert;
-		unsigned int m_LayerInsertIndex;
+		std::vector<Layer*> m_Layers;   //存入指向Layer对象的指针
+		unsigned int m_LayerInsertIndex = 0;
 	};
 
 }

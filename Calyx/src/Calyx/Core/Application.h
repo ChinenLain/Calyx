@@ -7,6 +7,7 @@
 #include "Calyx/Events/Event.h"
 #include "Calyx/Events/ApplicationEvent.h"
 
+#include "Calyx/ImGui/ImGuiLayer.h"
 
 namespace Calyx {
 
@@ -29,6 +30,7 @@ namespace Calyx {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

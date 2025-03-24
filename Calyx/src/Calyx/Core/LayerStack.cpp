@@ -5,8 +5,6 @@ namespace Calyx {
 
 	LayerStack::LayerStack()
 	{
-		//m_LayerInsert = m_Layers.begin();
-		m_LayerInsertIndex = 0;
 	}
 
 	LayerStack::~LayerStack()								//Ïú»Ù²ãÕ»

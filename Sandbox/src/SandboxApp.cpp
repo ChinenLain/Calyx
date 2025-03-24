@@ -1,5 +1,6 @@
 #include <Calyx.h>
 
+#include "imgui/imgui.h"
 
 class ExampleLayer : public Calyx::Layer
 {
@@ -15,6 +16,13 @@ public:
 	{
 		if (Calyx::Input::IsKeyPressed(CLX_KEY_TAB))
 			CLX_TRACE("Tab¼ü±»°´ÏÂ (poll)!");
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
 	}
 
 	void OnEvent(Calyx::Event& event) override
@@ -36,7 +44,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverLay(new Calyx::ImGuiLayer());
 	}
 
 	~Sandbox()

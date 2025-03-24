@@ -112,6 +112,7 @@ project "Sandbox"
 	{
 		"Calyx/vendor/spdlog/include",
 		"Calyx/src",
+		"Calyx/vendor",
 		"%{IncludeDir.glm}"
 	}
 
