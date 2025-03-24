@@ -25,11 +25,11 @@ namespace Calyx {
 #define CLX_CORE_INFO(...)     ::Calyx::Log::GetCoreLogger()->info(__VA_ARGS__)
 #define CLX_CORE_WARN(...)     ::Calyx::Log::GetCoreLogger()->warn(__VA_ARGS__)
 #define CLX_CORE_ERROR(...)    ::Calyx::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define CLX_CORE_FATAL(...)    ::Calyx::Log::GetCoreLogger()->critical(__VA_ARGS__)
+#define CLX_CORE_CRITICAL(...)    ::Calyx::Log::GetCoreLogger()->critical(__VA_ARGS__)
 
 //Client log macros
 #define CLX_TRACE(...)  ::Calyx::Log::GetClientLogger()->trace(__VA_ARGS__)
 #define CLX_INFO(...)   ::Calyx::Log::GetClientLogger()->info(__VA_ARGS__)
 #define CLX_WARN(...)   ::Calyx::Log::GetClientLogger()->warn(__VA_ARGS__)
 #define CLX_ERROR(...)  ::Calyx::Log::GetClientLogger()->error(__VA_ARGS__)
-#define CLX_FATAL(...)  ::Calyx::Log::GetClientLogger()->critical(__VA_ARGS__)
+#define CLX_CRITICAL(...)  ::Calyx::Log::GetClientLogger()->critical(__VA_ARGS__)
