@@ -155,6 +155,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Calyx\Renderer\Shader.h" />
     <ClInclude Include="src\Calyx.h" />
     <ClInclude Include="src\Calyx\Core\Application.h" />
     <ClInclude Include="src\Calyx\Core\Core.h" />
@@ -596,6 +597,7 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Calyx\Renderer\Shader.cpp" />
     <ClCompile Include="src\Calyx\Core\Application.cpp" />
     <ClCompile Include="src\Calyx\Core\Layer.cpp" />
     <ClCompile Include="src\Calyx\Core\LayerStack.cpp" />
