@@ -1,9 +1,11 @@
 #include "clxpch.h"
-#include "Platform\Windows\WindowsWindow.h"
+#include "Platform/Windows/WindowsWindow.h"
 
 #include "Calyx/Events/ApplicationEvent.h"
 #include "Calyx/Events/MouseEvent.h"
 #include "Calyx/Events/KeyEvent.h"
+
+#include "Platform/OpenGL/OpenGLContext.h"
 
 namespace Calyx
 {
@@ -48,9 +50,10 @@ namespace Calyx
 
 		//初始化Windows对象并创建窗口上下文
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr); 
-		glfwMakeContextCurrent(m_Window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		CLX_CORE_ASSERT(status, "Failed to initalize Glad!");
+
+		m_Context = new OpenGLContext(m_Window);
+		m_Context->Init();
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
@@ -137,7 +140,7 @@ namespace Calyx
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)							//是否启用垂直同步

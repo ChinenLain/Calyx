@@ -26,9 +26,10 @@ include "Calyx/vendor/imgui"
 
 project "Calyx"
 	location "Calyx"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -43,6 +44,11 @@ project "Calyx"
 		"%{prj.name}/vendor/glm/glm/**.hpp",
  		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
+
+	defines
+ 	{
+ 		"_CRT_SECURE_NO_WARNINGS"
+ 	}
 
 	includedirs
 	{
@@ -63,13 +69,13 @@ project "Calyx"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
 		{
 			"CLX_PLATFORM_WINDOWS",
-			"CLX_BULID_DLL"
+			"CLX_BULID_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
@@ -80,24 +86,25 @@ project "Calyx"
 	filter "configurations:Debug"
 		defines "CLX_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "CLX_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "CLX_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -122,7 +129,6 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -134,14 +140,14 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "CLX_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "CLX_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "CLX_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
