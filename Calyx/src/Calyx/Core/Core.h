@@ -9,6 +9,11 @@
 	#error Calyx only support Windows!
 #endif
 
+
+#ifdef CLX_DEBUG
+#define CLX_ENABLE_ASSERTS
+#endif
+
 #ifdef CLX_ENABLE_ASSERTS
 	//断言（如果x表示错误则语句运行，{0}占位的"__VA_ARGS__"代表"..."所输入的语句）
 	#define CLX_CORE_ASSERT(x, ...) \
@@ -28,3 +33,5 @@
 
 
 #define BIT(x) (1 << x)
+
+#define CLX_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)

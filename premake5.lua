@@ -27,6 +27,7 @@ project "Calyx"
 	location "Calyx"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -59,7 +60,6 @@ project "Calyx"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -75,17 +75,17 @@ project "Calyx"
 	
 	filter "configurations:Debug"
 		defines "CLX_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "CLX_RELEASE"
-		buildoptions "/MDd"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "CLX_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
@@ -93,6 +93,7 @@ project "Sandbox"
 	kind "ConsoleApp"
 
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -116,7 +117,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -127,15 +127,15 @@ project "Sandbox"
 	
 	filter "configurations:Debug"
 		defines "CLX_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "CLX_RELEASE"
-		buildoptions "/MDd"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "CLX_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
