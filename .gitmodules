@@ -7,3 +7,7 @@
 [submodule "Calyx/vendor/glm"]
 	path = Calyx/vendor/glm
 	url = https://github.com/g-truc/glm.git
+[submodule "Calyx/vendor/imgui"]
+	path = Calyx/vendor/imgui
+	url = https://github.com/ChinenLain/imgui.git
+	branch = docking
