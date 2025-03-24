@@ -18,6 +18,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Calyx/vendor/GLFW/include"
 IncludeDir["Glad"] = "Calyx/vendor/Glad/include"
 IncludeDir["ImGui"] = "Calyx/vendor/imgui"
+IncludeDir["glm"] = "Calyx/vendor/glm"
 
 include "Calyx/vendor/GLFW"
 include "Calyx/vendor/Glad"
@@ -39,6 +40,8 @@ project "Calyx"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+ 		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -47,7 +50,8 @@ project "Calyx"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -107,7 +111,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Calyx/vendor/spdlog/include",
-		"Calyx/src"
+		"Calyx/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links

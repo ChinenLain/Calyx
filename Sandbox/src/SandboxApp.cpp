@@ -1,11 +1,13 @@
 #include <Calyx.h>
 
+
 class ExampleLayer : public Calyx::Layer
 {
 public:
 	ExampleLayer()
 		:Layer("Example")
 	{
+
 	}
 
 
