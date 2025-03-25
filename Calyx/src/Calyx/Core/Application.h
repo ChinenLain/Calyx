@@ -13,6 +13,8 @@
 #include "Calyx/Renderer/Buffer.h"
 #include "Calyx/Renderer/VertexArray.h"
 
+#include "Calyx/Renderer/OrthographicCamera.h"
+
 namespace Calyx {
 
 	class CALYX_API Application
@@ -43,6 +45,8 @@ namespace Calyx {
 
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};
