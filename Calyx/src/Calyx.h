@@ -20,6 +20,7 @@
 
 #include "Calyx/Renderer/Buffer.h"
 #include "Calyx/Renderer/Shader.h"
+#include "Calyx/Renderer/Texture.h"
 #include "Calyx/Renderer/VertexArray.h"
 
 #include "Calyx/Renderer/OrthographicCamera.h"

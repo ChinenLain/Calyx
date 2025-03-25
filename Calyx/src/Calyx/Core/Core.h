@@ -1,4 +1,7 @@
 #pragma once
+
+#include<memory>
+
 #ifdef CLX_PLATFORM_WINDOWS
 #if CLX_DYNAMIC_LINK
 	#ifdef CLX_BULID_DLL
@@ -39,3 +42,13 @@
 #define BIT(x) (1 << x)
 
 #define CLX_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+
+namespace Calyx {
+
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+
+}

@@ -21,7 +21,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 
-		std::shared_ptr<Calyx::VertexBuffer> vertexBuffer;
+		Calyx::Ref<Calyx::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Calyx::VertexBuffer::Create(vertices, sizeof(vertices)));
 		Calyx::BufferLayout layout = {
 			{ Calyx::ShaderDataType::Float3, "a_Position" },
@@ -31,28 +31,29 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<Calyx::IndexBuffer> indexBuffer;
+		Calyx::Ref<Calyx::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Calyx::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		m_SquareVA.reset(Calyx::VertexArray::Create());
 
-		float squareVertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f
+		float squareVertices[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
-		std::shared_ptr<Calyx::VertexBuffer> squareVB;
+		Calyx::Ref<Calyx::VertexBuffer> squareVB;
 		squareVB.reset(Calyx::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
-			{ Calyx::ShaderDataType::Float3, "a_Position" }
+			{ Calyx::ShaderDataType::Float3, "a_Position" },
+			{ Calyx::ShaderDataType::Float2, "a_TexCoord" }
 			});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Calyx::IndexBuffer> squareIB;
+		Calyx::Ref<Calyx::IndexBuffer> squareIB;
 		squareIB.reset(Calyx::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -126,6 +127,46 @@ public:
 		)";
 
 		m_FlatColorShader.reset(Calyx::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+
+		std::string textureShaderVertexSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec2 a_TexCoord;
+
+			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
+
+			out vec2 v_TexCoord;
+
+			void main()
+			{
+				v_TexCoord = a_TexCoord;
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);	
+			}
+		)";
+
+		std::string textureShaderFragmentSrc = R"(
+			#version 330 core
+			
+			layout(location = 0) out vec4 color;
+
+			in vec2 v_TexCoord;
+			
+			uniform sampler2D u_Texture;
+
+			void main()
+			{
+				color = texture(u_Texture, v_TexCoord);
+			}
+		)";
+
+		m_TextureShader.reset(Calyx::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+
+		m_Texture = Calyx::Texture2D::Create("assets/textures/Checkerboard.png");
+
+		std::dynamic_pointer_cast<Calyx::OpenGLShader>(m_TextureShader)->Bind();
+		std::dynamic_pointer_cast<Calyx::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Calyx::Timestep ts) override
@@ -168,7 +209,11 @@ public:
 			}
 		}
 
-		Calyx::Renderer::Submit(m_Shader, m_VertexArray);
+		m_Texture->Bind();
+		Calyx::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
+		// Triangle
+		// Calyx::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Calyx::Renderer::EndScene();
 	}
@@ -184,11 +229,13 @@ public:
 	{
 	}
 private:
-	std::shared_ptr<Calyx::Shader> m_Shader;
-	std::shared_ptr<Calyx::VertexArray> m_VertexArray;
+	Calyx::Ref<Calyx::Shader> m_Shader;
+	Calyx::Ref<Calyx::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Calyx::Shader> m_FlatColorShader;
-	std::shared_ptr<Calyx::VertexArray> m_SquareVA;
+	Calyx::Ref<Calyx::Shader> m_FlatColorShader, m_TextureShader;
+	Calyx::Ref<Calyx::VertexArray> m_SquareVA;
+
+	Calyx::Ref<Calyx::Texture2D> m_Texture;
 
 	Calyx::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
@@ -219,3 +266,4 @@ Calyx::Application* Calyx::CreateApplication()
 {
 	return new Sandbox();
 }
+
