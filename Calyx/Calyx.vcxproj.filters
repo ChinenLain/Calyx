@@ -1378,6 +1378,7 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Calyx\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Calyx\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Calyx\Core\Timestep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Calyx\Core\Application.cpp">

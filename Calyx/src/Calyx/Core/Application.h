@@ -7,17 +7,13 @@
 #include "Calyx/Events/Event.h"
 #include "Calyx/Events/ApplicationEvent.h"
 
+#include "Calyx/Core/Timestep.h"
+
 #include "Calyx/ImGui/ImGuiLayer.h"
-
-#include "Calyx/Renderer/Shader.h"
-#include "Calyx/Renderer/Buffer.h"
-#include "Calyx/Renderer/VertexArray.h"
-
-#include "Calyx/Renderer/OrthographicCamera.h"
 
 namespace Calyx {
 
-	class CALYX_API Application
+	class Application
 	{
 	public:
 		Application();
@@ -35,18 +31,13 @@ namespace Calyx {
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
+	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+		float m_LastFrameTime = 0.0f;
 
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_BlueShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Calyx/Core/Core.h"
+#include "Calyx/Core/Timestep.h"
 #include "Calyx/Events/Event.h"
 
 namespace Calyx
@@ -13,7 +14,7 @@ namespace Calyx
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 
